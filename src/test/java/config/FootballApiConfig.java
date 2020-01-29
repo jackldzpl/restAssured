@@ -22,7 +22,7 @@ public class FootballApiConfig {
                 setBaseUri("https://api.football-data.org").
                 setBasePath("/v2/").
                 addHeader("X-Auth-Token","70441c3a19d846ed8764f31bb3408ecb").
-                addHeader("X-Response-Control","minified").  //wydobawy czesc metadych
+                addHeader("X-Response-Control","minified").  //wydobywamy czesc metadych
                 addFilter(new RequestLoggingFilter()).
                 addFilter(new ResponseLoggingFilter()).
                 build();

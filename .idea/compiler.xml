@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="RestAssuredMaven" />
+        <module name="restAssured" />
       </profile>
     </annotationProcessing>
   </component>
