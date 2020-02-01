@@ -1,4 +1,3 @@
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import config.FootballApiConfig;
 import io.restassured.http.ContentType;
 import io.restassured.http.Headers;
@@ -92,6 +91,16 @@ public class FootballApiTests extends FootballApiConfig {
         System.out.println("\n +WYNIK");
         System.out.println(firstTeamName);
     }
+    //or drugi sposob
+    @Test
+    public void extractFirstTeamName2 (){
+        Response response = get("competitions/2021/teams").then().extract().response();
+
+        String firstTeamName = response.jsonPath().getString("teams.name[0]");
+
+        System.out.println("\n +WYNIK");
+        System.out.println(firstTeamName);
+    }
 
     @Test
     public void extractAllTeamNames(){
@@ -101,6 +110,20 @@ public class FootballApiTests extends FootballApiConfig {
                 then().extract().response();
                                 //automatycznie na json path, wiec mozna albo path albo Jsonpath
         List<String> teamNames = response.path("teams.name");
+
+        System.out.println("TEAM NAMES");
+        for(String name: teamNames){
+            System.out.println(name);
+        }
+    }
+    // or hmm?
+
+    @Test
+    public void extractAllTeamNames2(){
+        List<String> teamNames =
+                 given().
+                        when().get("competitions/2021/teams").
+                        then().extract().response().path("teams.name");
 
         System.out.println("TEAM NAMES");
         for(String name: teamNames){
